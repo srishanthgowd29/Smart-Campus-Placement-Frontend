@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import ForgotPassword from "./ForgotPassword"
+import PlacementDashboard from "./PlacementDashboard"
+import MyApplications from "./MyApplications"
+import Jobs from "./Jobs"
+import UpdatePassword from "./UpdatePassword"
+import EditProfile from "./EditProfile"
+import { useState } from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Register from "./Register"
+import Login from "./Login"
+import Home from "./Home"
+import UserDashboard from "./UserDashboard"
+import Delete from "./Delete"
+import Admin from "./Admin"
+function App () {
+    return(
+      <BrowserRouter>
+            <Routes>
+               <Route path="/" element={<Home/>}/>
+               <Route path="/reg" element={<Register/>}/>
+               <Route path="/log" element={<Login/>}/>
+               <Route path="/forgot" element={<ForgotPassword />} />
+               <Route path="/dboard" element={<UserDashboard/>}/>
+               <Route path="/placement" element={<PlacementDashboard />} />
+               <Route path="/edit" element={<EditProfile/>}/>
+               <Route path="/password" element={<UpdatePassword/>}/>
+               <Route path="/delete" element={<Delete/>}/>
+               <Route path="/jobs" element={<Jobs/>}/>
+               <Route path="/applications" element={<MyApplications/>}/>
+               <Route path="/admin" element={<Admin/>}/>
+            </Routes>
+      </BrowserRouter>
+    )
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
 }
-
-export default App;
+export default App
