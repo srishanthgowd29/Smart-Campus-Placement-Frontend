@@ -4,7 +4,6 @@ import MyApplications from "./MyApplications"
 import Jobs from "./Jobs"
 import UpdatePassword from "./UpdatePassword"
 import EditProfile from "./EditProfile"
-import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Register from "./Register"
 import Login from "./Login"
