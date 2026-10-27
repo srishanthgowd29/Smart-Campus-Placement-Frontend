@@ -26,7 +26,7 @@ function Jobs() {
             try {
 
                 const userResult = await axios.get(
-                    "http://localhost:8080/user/" + username,
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
                     {
                         withCredentials: true
                     }
@@ -37,14 +37,14 @@ function Jobs() {
 
 
                 const jobsResult = await axios.get(
-                    "http://localhost:8080/jobs"
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/jobs"
                 )
 
                 setJobs(jobsResult.data)
 
 
                 const applicationsResult = await axios.get(
-                    "http://localhost:8080/applications",
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/applications",
                     {
                         withCredentials: true
                     }
@@ -79,7 +79,7 @@ function Jobs() {
         try {
 
             const result = await axios.post(
-                "http://localhost:8080/apply",
+                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/apply",
                 {
                     username: username,
                     jobId: jobId

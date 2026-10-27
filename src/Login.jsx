@@ -40,7 +40,7 @@ function Login() {
             if (data.uname === "admin") {
 
                 const adminResult = await axios.post(
-                    "http://localhost:8080/admin/login",
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/admin/login",
                     {
                         username: data.uname,
                         password: data.psw
@@ -65,7 +65,7 @@ function Login() {
              */
 
             const result = await axios.post(
-                "http://localhost:8080/login",
+                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/login",
                 data,
                 {
                     withCredentials: true

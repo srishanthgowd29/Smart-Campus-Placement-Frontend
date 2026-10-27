@@ -46,7 +46,7 @@ function Register() {
         try {
 
             const result = await axios.post(
-                "http://localhost:8080/register",
+                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/register",
                 data
             )
 
