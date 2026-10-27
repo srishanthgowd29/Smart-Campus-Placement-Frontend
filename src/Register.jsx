@@ -3,7 +3,6 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
 function Register() {
-
     const navigate = useNavigate()
 
     const [data, setData] = useState({
@@ -25,7 +24,6 @@ function Register() {
     }
 
     const submit = async (e) => {
-
         e.preventDefault()
 
         if (data.password.length < 6) {
@@ -38,22 +36,23 @@ function Register() {
             return
         }
 
-        if (data.cgpa && (Number(data.cgpa) < 0 || Number(data.cgpa) > 10)) {
+        if (
+            data.cgpa &&
+            (Number(data.cgpa) < 0 || Number(data.cgpa) > 10)
+        ) {
             alert("CGPA must be between 0 and 10")
             return
         }
 
         try {
-
             const result = await axios.post(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/register",
+                "https://smart-campus-placement-backend.onrender.com/register",
                 data
             )
 
             alert(result.data)
 
             if (result.data === "Registration successful") {
-
                 setData({
                     username: "",
                     email: "",
@@ -67,26 +66,21 @@ function Register() {
 
                 navigate("/log")
             }
-
         } catch (error) {
-
             console.log("Registration error:", error)
 
             alert(
-                error.response?.data ||
-                "Registration failed. Please try again."
+                typeof error.response?.data === "string"
+                    ? error.response.data
+                    : "Registration failed. Please try again."
             )
         }
     }
 
     return (
         <div className="auth-page">
-
             <div className="register-box">
-
-                <div className="auth-icon">
-                    🎓
-                </div>
+                <div className="auth-icon">🎓</div>
 
                 <h1>Student Registration</h1>
 
@@ -95,12 +89,9 @@ function Register() {
                 </p>
 
                 <form onSubmit={submit}>
-
                     <div className="form-grid">
-
                         <div className="form-group">
                             <label>Username *</label>
-
                             <input
                                 name="username"
                                 placeholder="Enter your username"
@@ -112,7 +103,6 @@ function Register() {
 
                         <div className="form-group">
                             <label>Email *</label>
-
                             <input
                                 name="email"
                                 type="email"
@@ -125,7 +115,6 @@ function Register() {
 
                         <div className="form-group">
                             <label>Password *</label>
-
                             <input
                                 name="password"
                                 type="password"
@@ -135,7 +124,6 @@ function Register() {
                                 minLength="6"
                                 required
                             />
-
                             <small className="form-help">
                                 Minimum 6 characters
                             </small>
@@ -143,7 +131,6 @@ function Register() {
 
                         <div className="form-group">
                             <label>Phone Number</label>
-
                             <input
                                 name="phone"
                                 type="tel"
@@ -156,53 +143,39 @@ function Register() {
 
                         <div className="form-group">
                             <label>Branch</label>
-
                             <select
                                 name="branch"
                                 value={data.branch}
                                 onChange={change}
                             >
-                                <option value="">
-                                    Select your branch
-                                </option>
-
+                                <option value="">Select your branch</option>
                                 <option value="CSE">
                                     Computer Science Engineering
                                 </option>
-
                                 <option value="CSE-DS">
                                     CSE - Data Science
                                 </option>
-
                                 <option value="CSE-AIML">
-                                    CSE - AI & ML
+                                    CSE - AI &amp; ML
                                 </option>
-
                                 <option value="ECE">
-                                    Electronics & Communication
+                                    Electronics &amp; Communication
                                 </option>
-
                                 <option value="EEE">
-                                    Electrical & Electronics
+                                    Electrical &amp; Electronics
                                 </option>
-
                                 <option value="ME">
                                     Mechanical Engineering
                                 </option>
-
                                 <option value="CE">
                                     Civil Engineering
                                 </option>
-
-                                <option value="Other">
-                                    Other
-                                </option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
                         <div className="form-group">
                             <label>CGPA</label>
-
                             <input
                                 name="cgpa"
                                 type="number"
@@ -214,13 +187,10 @@ function Register() {
                                 onChange={change}
                             />
                         </div>
-
                     </div>
 
                     <div className="form-group">
-
                         <label>Technical Skills</label>
-
                         <textarea
                             name="skills"
                             placeholder="Example: Java, Python, SQL, React"
@@ -228,17 +198,13 @@ function Register() {
                             onChange={change}
                             rows="3"
                         />
-
                         <small className="form-help">
                             Add skills that you know.
                         </small>
-
                     </div>
 
                     <div className="form-group">
-
                         <label>Resume Link</label>
-
                         <input
                             name="resume"
                             type="url"
@@ -246,43 +212,25 @@ function Register() {
                             value={data.resume}
                             onChange={change}
                         />
-
                         <small className="form-help">
                             You can add your Google Drive resume link.
                         </small>
-
                     </div>
 
-                    <button
-                        type="submit"
-                        className="auth-btn"
-                    >
+                    <button type="submit" className="auth-btn">
                         Create Student Account
                     </button>
-
                 </form>
 
                 <div className="auth-links">
-
-                    <span>
-                        Already have an account?
-                    </span>
-
-                    <Link to="/log">
-                        Login
-                    </Link>
-
+                    <span>Already have an account?</span>
+                    <Link to="/log">Login</Link>
                 </div>
 
-                <Link
-                    to="/"
-                    className="back-home"
-                >
+                <Link to="/" className="back-home">
                     ← Back to Home
                 </Link>
-
             </div>
-
         </div>
     )
 }
