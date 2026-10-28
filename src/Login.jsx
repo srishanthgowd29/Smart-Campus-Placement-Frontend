@@ -1,9 +1,11 @@
+
 import { useState } from "react"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
-function Login() {
+const API = "https://smart-campus-placement-backend.onrender.com"
 
+function Login() {
     const navigate = useNavigate()
 
     const [data, setData] = useState({
@@ -21,7 +23,6 @@ function Login() {
     }
 
     const submit = async (e) => {
-
         e.preventDefault()
 
         if (!data.uname || !data.psw) {
@@ -32,26 +33,18 @@ function Login() {
         setLoading(true)
 
         try {
-
-            /*
-             * ADMIN LOGIN
-             */
-
-            if (data.uname === "admin") {
-
+            // ADMIN LOGIN
+            if (data.uname.trim() === "admin") {
                 const adminResult = await axios.post(
-                    "http://localhost:8080/admin/login",
+                    `${API}/admin/login`,
                     {
-                        username: data.uname,
+                        username: data.uname.trim(),
                         password: data.psw
                     },
-                    {
-                        withCredentials: true
-                    }
+                    { withCredentials: true }
                 )
 
                 if (adminResult.data === "Admin login successful") {
-
                     navigate("/admin")
                     return
                 }
@@ -60,70 +53,52 @@ function Login() {
                 return
             }
 
-            /*
-             * STUDENT LOGIN
-             */
-
+            // STUDENT LOGIN
             const result = await axios.post(
-                "http://localhost:8080/login",
-                data,
+                `${API}/login`,
                 {
-                    withCredentials: true
-                }
+                    uname: data.uname.trim(),
+                    psw: data.psw
+                },
+                { withCredentials: true }
             )
 
             if (
-                typeof result.data === "string" &&
-                result.data === "Invalid username or password"
+                typeof result.data === "string" ||
+                !result.data?.username
             ) {
-                alert(result.data)
+                alert(
+                    typeof result.data === "string"
+                        ? result.data
+                        : "Login failed. Please try again."
+                )
                 return
             }
 
-            localStorage.setItem(
-                "uname",
-                result.data.username
-            )
-
+            localStorage.setItem("uname", result.data.username)
             navigate("/dboard")
 
         } catch (error) {
-
-            console.log("Login error:", error)
+            console.error("Login error:", error)
 
             if (error.response) {
-
                 alert(
                     typeof error.response.data === "string"
                         ? error.response.data
-                        : "Login failed"
+                        : "Login failed. Please try again."
                 )
-
-            } else if (error.request) {
-
-                alert(
-                    "Backend is not responding. Please start Spring Boot."
-                )
-
             } else {
-
-                alert("Unable to login. Please try again.")
+                alert("Cannot connect to the backend. Please try again.")
             }
-
         } finally {
-
             setLoading(false)
         }
     }
 
     return (
         <div className="auth-page">
-
             <div className="auth-box">
-
-                <div className="auth-icon">
-                    🎓
-                </div>
+                <div className="auth-icon">🎓</div>
 
                 <h1>Student Login</h1>
 
@@ -132,11 +107,8 @@ function Login() {
                 </p>
 
                 <form onSubmit={submit}>
-
                     <div className="form-group">
-
                         <label>Username</label>
-
                         <input
                             type="text"
                             name="uname"
@@ -145,13 +117,10 @@ function Login() {
                             onChange={change}
                             required
                         />
-
                     </div>
 
                     <div className="form-group">
-
                         <label>Password</label>
-
                         <input
                             type="password"
                             name="psw"
@@ -160,7 +129,6 @@ function Login() {
                             onChange={change}
                             required
                         />
-
                     </div>
 
                     <button
@@ -170,45 +138,28 @@ function Login() {
                     >
                         {loading ? "Signing In..." : "Login"}
                     </button>
-
                 </form>
 
                 <div className="auth-links">
+                    <Link to="/forgot">Forgot Password?</Link>
 
-                    <Link to="/forgot">
-                        Forgot Password?
-                    </Link>
+                    <span>Don't have a student account?</span>
 
-                    <span>
-                        Don't have a student account?
-                    </span>
-
-                    <Link to="/reg">
-                        Create Student Account
-                    </Link>
-
+                    <Link to="/reg">Create Student Account</Link>
                 </div>
 
                 <div className="login-info">
-
                     <span>🔒</span>
-
                     <p>
                         Your account information is protected
                         with secure authentication.
                     </p>
-
                 </div>
 
-                <Link
-                    to="/"
-                    className="back-home"
-                >
+                <Link to="/" className="back-home">
                     ← Back to Home
                 </Link>
-
             </div>
-
         </div>
     )
 }
