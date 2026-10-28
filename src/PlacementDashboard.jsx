@@ -25,7 +25,7 @@ function PlacementDashboard() {
             try {
 
                 const userResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
+                    "https://smart-campus-placement-backend.onrender.com/user/" + username,
                     {
                         withCredentials: true
                     }
@@ -40,14 +40,14 @@ function PlacementDashboard() {
 
 
                 const jobsResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/jobs"
+                    "https://smart-campus-placement-backend.onrender.com/jobs"
                 )
 
                 setJobs(jobsResult.data)
 
 
                 const applicationsResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/applications",
+                    "https://smart-campus-placement-backend.onrender.com/applications",
                     {
                         withCredentials: true
                     }

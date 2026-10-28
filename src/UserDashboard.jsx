@@ -17,7 +17,7 @@ function UserDashboard() {
         }
 
         axios.get(
-            "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
+            "https://smart-campus-placement-backend.onrender.com/user/" + username,
             {
                 withCredentials: true
             }

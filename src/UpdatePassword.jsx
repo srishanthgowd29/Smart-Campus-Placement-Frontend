@@ -43,7 +43,7 @@ function UpdatePassword() {
         try {
 
             const result = await axios.put(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" +
+                "https://smart-campus-placement-backend.onrender.com/user/" +
                 username +
                 "/password",
                 {

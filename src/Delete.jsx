@@ -46,7 +46,7 @@ function Delete() {
         try {
 
             const result = await axios.delete(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
+                "https://smart-campus-placement-backend.onrender.com/user/" + username,
                 {
                     withCredentials: true
                 }

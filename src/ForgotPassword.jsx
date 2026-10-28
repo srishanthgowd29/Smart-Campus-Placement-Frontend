@@ -58,7 +58,7 @@ function ForgotPassword() {
         try {
 
             const result = await axios.put(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/forgot-password",
+                "https://smart-campus-placement-backend.onrender.com/forgot-password",
                 {
                     username: data.username,
                     email: data.email,

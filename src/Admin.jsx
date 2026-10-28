@@ -28,7 +28,7 @@ function Admin() {
             try {
 
                 const checkResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/admin/check",
+                    "https://smart-campus-placement-backend.onrender.com/admin/check",
                     {
                         withCredentials: true
                     }
@@ -45,7 +45,7 @@ function Admin() {
 
 
                 const usersResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/users",
+                    "https://smart-campus-placement-backend.onrender.com/users",
                     {
                         withCredentials: true
                     }
@@ -55,7 +55,7 @@ function Admin() {
 
 
                 const applicationsResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/applications",
+                    "https://smart-campus-placement-backend.onrender.com/applications",
                     {
                         withCredentials: true
                     }
@@ -67,7 +67,7 @@ function Admin() {
 
 
                 const jobsResult = await axios.get(
-                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/jobs",
+                    "https://smart-campus-placement-backend.onrender.com/jobs",
                     {
                         withCredentials: true
                     }
@@ -174,7 +174,7 @@ function Admin() {
         try {
 
             const result = await axios.post(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/job",
+                "https://smart-campus-placement-backend.onrender.com/job",
                 {
                     company: company,
                     role: role,
@@ -239,7 +239,7 @@ function Admin() {
         try {
 
             await axios.put(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/application/" +
+                "https://smart-campus-placement-backend.onrender.com/application/" +
                 id +
                 "/status",
                 {
@@ -293,7 +293,7 @@ function Admin() {
         try {
 
             await axios.post(
-                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/admin/logout",
+                "https://smart-campus-placement-backend.onrender.com/admin/logout",
                 {},
                 {
                     withCredentials: true
