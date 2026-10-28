@@ -29,7 +29,7 @@ function EditProfile() {
         }
 
         axios.get(
-            "http://localhost:8080/user/" + username,
+            "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
             {
                 withCredentials: true
             }
@@ -112,7 +112,7 @@ function EditProfile() {
         try {
 
             const result = await axios.put(
-                "http://localhost:8080/user/" + username,
+                "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/user/" + username,
                 data,
                 {
                     withCredentials: true

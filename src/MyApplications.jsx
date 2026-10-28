@@ -26,7 +26,7 @@ function MyApplications() {
             try {
 
                 const applicationsResult = await axios.get(
-                    "http://localhost:8080/applications",
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/applications",
                     {
                         withCredentials: true
                     }
@@ -44,7 +44,7 @@ function MyApplications() {
 
 
                 const jobsResult = await axios.get(
-                    "http://localhost:8080/jobs"
+                    "[https://smart-campus-placement-backend.onrender.com](https://smart-campus-placement-backend.onrender.com)/jobs"
                 )
 
 

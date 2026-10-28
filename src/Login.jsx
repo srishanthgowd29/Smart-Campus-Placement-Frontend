@@ -25,7 +25,7 @@ function Login() {
     const submit = async (e) => {
         e.preventDefault()
 
-        if (!data.uname || !data.psw) {
+        if (!data.uname.trim() || !data.psw) {
             alert("Please enter username and password")
             return
         }
@@ -33,7 +33,6 @@ function Login() {
         setLoading(true)
 
         try {
-            // ADMIN LOGIN
             if (data.uname.trim() === "admin") {
                 const adminResult = await axios.post(
                     `${API}/admin/login`,
@@ -53,7 +52,6 @@ function Login() {
                 return
             }
 
-            // STUDENT LOGIN
             const result = await axios.post(
                 `${API}/login`,
                 {
@@ -142,9 +140,7 @@ function Login() {
 
                 <div className="auth-links">
                     <Link to="/forgot">Forgot Password?</Link>
-
                     <span>Don't have a student account?</span>
-
                     <Link to="/reg">Create Student Account</Link>
                 </div>
 
